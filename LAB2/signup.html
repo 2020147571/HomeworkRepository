@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="./main.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Sign Up Page</title>
+</head>
+<body>
+    <header>
+        <h1>Sign Up Page</h1>
+        <nav>
+            <a href="login.html">로그인</a>
+        </nav>
+    </header>
+    <main>
+        <form>
+            <fieldset>
+                <label for="user-name"><b>이름</b> &nbsp;</label>
+                <input type="text" id="user-name" autofocus placeholder="이름을 입력하세요" required> 
+                <br><br>
+
+                <label for="user-id"><b>아이디&nbsp;</b></label>
+                <input type="text" id="user-id" maxlength="15" autocomplete="off" placeholder="아이디를 입력하세요" required>
+                <br><br>
+
+                <label for="user-password"><b>비밀번호&nbsp;</b></label>
+                <input type="password" id="user-id" maxlength="20" placeholder="비밀번호를 입력하세요" required> 
+                <br>
+
+                <p><b>성별</b></p>
+                <label><input type="radio" name="gender" value="male">남자</label>
+                <label><input type="radio" name="gender" value="female">여자</label>
+                <br><br>
+
+                <label for="birthday"><b>생년월일</b></label>
+                <input type="date" id="birthday" required>
+                <br><br>
+
+                <label for="email-address"><b>이메일</b></label>
+                <input type="email" id="email-address" size="25" required>
+                <br><br>
+
+                <input type="submit" value="Sign Up">
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
