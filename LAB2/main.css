@@ -47,7 +47,8 @@ input[type=submit]{
     font-family: 'Noto Sans KR', sans-serif;
     background-color: black;
     font-weight: bold;
-    width: 20%;
+    width: 200px;
+    height: 30px;
 }
 
 input[type=submit]:hover {
