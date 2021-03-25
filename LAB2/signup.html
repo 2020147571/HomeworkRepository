@@ -7,36 +7,36 @@
 </head>
 <body>
     <header>
-        <h1>Sign Up Page</h1>
+        <h1 id="title">Sign Up Page</h1>
         <nav>
-            <a href="login.html">로그인</a>
+            <a href="login.html">Go to Login</a>
         </nav>
     </header>
     <main>
-        <form>
+        <form class="signup_window" method="post">
             <fieldset>
-                <label for="user-name"><b>이름</b> &nbsp;</label>
+                <label for="user-name">이름 &nbsp;</label>
                 <input type="text" id="user-name" autofocus placeholder="이름을 입력하세요" required> 
                 <br><br>
 
-                <label for="user-id"><b>아이디&nbsp;</b></label>
+                <label for="user-id">아이디&nbsp;</label>
                 <input type="text" id="user-id" maxlength="15" autocomplete="off" placeholder="아이디를 입력하세요" required>
                 <br><br>
 
-                <label for="user-password"><b>비밀번호&nbsp;</b></label>
+                <label for="user-password">비밀번호&nbsp;</label>
                 <input type="password" id="user-id" maxlength="20" placeholder="비밀번호를 입력하세요" required> 
                 <br>
 
-                <p><b>성별</b></p>
+                <p>성별</p>
                 <label><input type="radio" name="gender" value="male">남자</label>
                 <label><input type="radio" name="gender" value="female">여자</label>
                 <br><br>
 
-                <label for="birthday"><b>생년월일</b></label>
+                <label for="birthday">생년월일</label>
                 <input type="date" id="birthday" required>
                 <br><br>
 
-                <label for="email-address"><b>이메일</b></label>
+                <label for="email-address">이메일</label>
                 <input type="email" id="email-address" size="25" required>
                 <br><br>
 
