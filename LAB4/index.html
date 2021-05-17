@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="./main.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<script>
+    // fetch
+    fetch("product.json")
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(res) {
+        
+        // json에서 value와 key값을 배열로 만듦
+        var val_temp = Object.values(res);
+        var key_temp = Object.keys(res);
+
+        // json 파일로 부터 만든 배열로 데이터 입력
+        for(let i = 0; i < key_temp.length; i++) {
+            var node = document.getElementById(key_temp[i]);
+            node.setAttribute("name", val_temp[i].name);
+            node.setAttribute("category", val_temp[i].lang);
+            node.setAttribute("price", val_temp[i].price);
+        }
+
+        // 제품 클릭 이벤트 설정
+        var node = document.getElementsByClassName("commerce-img")
+        for(let i = 0; i < key_temp.length; i++) {
+            node[i].addEventListener('click', showInfo);
+        }
+
+        // 제품 클릭시 이벤트 함수
+        function showInfo() {
+            let temp = this.id + "_info";
+            var node = document.getElementById(temp);
+            if(node.style.display == "none"){
+                node.style.display = "block";
+            } else {
+                node.style.display = "none";
+            }
+        }
+
+        // 검색 필터 함수
+        function filter() {
+        let keyword = document.getElementById("fsearch").value.toLowerCase();
+        let category = document.getElementById("category")
+        let categoryvalue = category.options[category.selectedIndex].value;
+        let commerce = document.getElementsByClassName("commerce-img");
+        
+        console.log(categoryvalue);
+        if (keyword == "") {
+            for(let i = 0; i < commerce.length; i++) {
+                commerce[i].style.display = "inline";
+            }
+        }
+
+
+        for(let i = 0; i < commerce.length; i++) {
+            comm = commerce[i].name;
+            if(categoryvalue == "all") {
+                if(comm.includes(keyword)) {
+                commerce[i].style.display = "flex";
+                } else {
+                commerce[i].style.display = "none";
+                }
+            }
+            else {
+                var categ = commerce[i].getAttribute("category")
+                if(comm.includes(keyword) && categoryvalue == categ) {
+                commerce[i].style.display = "flex";
+                } else {
+                commerce[i].style.display = "none";
+                }
+            }
+            }
+    
+        }
+            // 검색, 카테고리 필터 이벤트 설정
+            document.getElementById("fsearch").addEventListener('keyup', filter);
+            document.getElementById("category").addEventListener('change', filter);
+        })
+    
+
+    
+</script>
+<body id="container">
+    <header>
+        <h1 id="main-title">코딩클래스</h1>
+        <nav>
+            <a id="nav" href="login.html">로그인</a>
+            <a id="nav" href="signup.html">회원가입</a>     
+        </nav>
+    </header>
+    <section id="commerce">
+        <h2 id="commerce-title">Product</h2>
+        <div id="commerce-section">
+            <div class="commerce-info">
+                <img class="commerce-img" id="bit" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSctg-rynAgQ33WWJT2Nt6cABwVU5pvddJYJw&usqp=CAU">
+                <div class="commerce-text" id="bit_info">
+                    <p>price : 10000, using python</p>
+                </div>
+            </div>
+            <div class="commerce-info">     
+                <img class="commerce-img" id="stock" src="https://image.aladin.co.kr/product/23794/93/cover150/k452639080_1.jpg" >
+                <div class="commerce-text" id="stock_info">
+                    <p>price : 11000, using python</p>
+                </div>
+            </div>
+            <div class="commerce-info">
+                <img class="commerce-img" id="pythonai" src="https://image.aladin.co.kr/product/26171/28/cover150/k812737354_1.jpg" >
+                <div class="commerce-text" id="pythonai_info">
+                    <p>price : 13000, using python</p>
+                </div>
+            </div>
+            <div class="commerce-info">
+                <img class="commerce-img" id="appdev" src="https://image.aladin.co.kr/product/26714/33/cover150/k072730082_1.jpg" >
+                <div class="commerce-text" id="appdev_info">
+                    <p>price : 15000, using java</p>
+                </div>
+            </div>
+            <div class="commerce-info">
+                <img class="commerce-img" id="webdev" src="https://image.aladin.co.kr/product/22712/84/cover150/k412636134_1.jpg" >
+                <div class="commerce-text" id="webdev_info">
+                    <p>price : 16000, using java</p>
+                </div>
+            </div>
+            <div class="commerce-info">
+                <img class="commerce-img" id="gamedev" src="https://image.aladin.co.kr/product/7167/37/cover150/8997716824_1.jpg" >
+                <div class="commerce-text" id="gamedev_info">
+                    <p>price : 20000, using cpp</p>
+                </div>
+            </div>
+            <div class="commerce-info">
+                <img class="commerce-img" id="designpattern" src="https://image.aladin.co.kr/product/18870/48/cover150/k422635080_1.jpg">
+                <div class="commerce-text" id="designpattern_info">
+                    <p>price : 15000, using cpp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="search">
+        <form name="searchinfo" method="GET">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+                <option value="all">All</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+            </select>
+            <br>
+            <label>search</label><input type="search" id="fsearch">
+        </form>
+    </section>
+    
+</body>
+</html>
